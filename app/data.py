@@ -2,7 +2,16 @@ from DataHandler import DataHandler
 import json
 import os
 
-f = open('./data_config.json')
+# Block determines which configuration to load
+# Allows flexibility for development 
+if os.path.exists('./configs/user_data_config.json'):
+    f = open('./configs/user_data_config.json')
+    print(f"loaded user configuration")
+else:
+    f = open('./configs/default_data_config.json')
+    print(f"loaded default configuration")
+
+
 config = json.load(f)
 
 handler = DataHandler(config)
@@ -28,5 +37,3 @@ if len(csv_list) > 0:
         # and the object can communicate that all items were successfully committed
         # deletion of the csv data should be the very last step
         # or maybe, we can simply move the CSV file to the macos trash can and let the autodelete feature take care of it
-    
-

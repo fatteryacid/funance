@@ -1,0 +1,11 @@
+{
+    "initialized": false,
+    "connection_metadata": {
+        "database": "funance",
+        "dbname": "funance",
+        "user": "YOUR USER",
+        "password": "YOUR PASSWORD",
+        "host": "localhost",
+        "port": 5432
+    }
+}
