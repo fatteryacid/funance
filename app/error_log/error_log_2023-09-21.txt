@@ -1,0 +1,108 @@
+<li class="result-list-item">
+ <section class="search-result cab card__basic" data-backend-sitecode="cab" data-listing-id="cab-KPQyedka">
+  <div class="result-wrap">
+   <a class="listing-link image-link" href="https://carsandbids.com/auctions/KPQyedka/2016-lexus-rc-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+    <div class="image" data-img="https://thumb.autotempest.com/cab/JTHHP5BC0G5005729_KPQyedka_5bf86b21fd41cc3087046df8b375a80d_37800_b4cdec75d2a84b95d9393d77fbf36cf7.webp" data-img-fallback="https://media.carsandbids.com/cdn-cgi/image/width=540,quality=80/4822e9034b0b6b357b3f73fabdfc10e586c36f68/photos/98yDPyQX-Gvlde3mQCp-(edit).jpg?t=169521255417" data-img-placeholder="//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg" style='background-image: url("https://thumb.autotempest.com/cab/JTHHP5BC0G5005729_KPQyedka_5bf86b21fd41cc3087046df8b375a80d_37800_b4cdec75d2a84b95d9393d77fbf36cf7.webp"), url("//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg");'>
+    </div>
+   </a>
+   <div class="description-wrap">
+    <h2>
+     <span class="title-wrap listing-title">
+      <a class="listing-link source-link" href="https://carsandbids.com/auctions/KPQyedka/2016-lexus-rc-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+       2016 Lexus RC F
+      </a>
+      <a class="logo-link" href="https://carsandbids.com/auctions/KPQyedka/2016-lexus-rc-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search">
+       <img alt="Cars &amp; Bids" class="source-logo cab-logo" src="//static.autotempest.com/prod/build/main/img/source-logos/cab-logo.f73a38cb.png"/>
+      </a>
+     </span>
+    </h2>
+    <div class="price-wrap">
+     <div class="description-badges">
+      <div class="description-badges__auction-badge badge">
+       <div>
+        <div aria-expanded="false" class="badge__title static-tippy" data-tippy-content="&lt;h2&gt;&lt;i class='icon-hammer'&gt;&lt;/i&gt;Auction Listing&lt;/h2&gt;
+                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$19,500&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
+         <i class="icon-hammer icon">
+         </i>
+        </div>
+       </div>
+       <div class="badge__labels">
+        <div class="badge__label label--bid">
+         $19,500
+        </div>
+        <div class="badge__label">
+         <span class="info time-left">
+          <i class="icon-stopwatch">
+          </i>
+          <span class="time-left__timer" data-end-date="1695837960">
+           5 days
+          </span>
+         </span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="info-wrap">
+     <div class="info mileageDate">
+      <span class="mileage">
+       <i class="icon-gauge">
+       </i>
+       37,800 mi.
+      </span>
+      <span class="date">
+       <i class="icon-clock">
+       </i>
+       2 days ago
+      </span>
+     </div>
+     <div class="info location has-distance">
+      <span class="location-info-wrap">
+       <span class="city">
+        <i class="icon-direction">
+        </i>
+        New Hill, NC
+       </span>
+       <span class="distance">
+        (2199 mi. from 92606)
+       </span>
+      </span>
+     </div>
+    </div>
+    <div class="details">
+     <span class="short">
+      1 Owner, 5.0L V8 Power, Premium Package,
+     </span>
+     <span class="mid">
+      Some Modifications
+     </span>
+     <span class="long">
+     </span>
+     <span class="extra-long">
+     </span>
+     <span class="more has-details-mid">
+      ...
+      <a class="listing-link" href="https://carsandbids.com/auctions/KPQyedka/2016-lexus-rc-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+       Read More
+      </a>
+     </span>
+    </div>
+    <div class="inline-tools">
+     <div class="tools">
+      <div class="share-link inline-tool">
+       <a onclick="window.AT.shareListing(`cab`, `JTHHP5BC0G5005729`, `Lexus`, `rcf`)">
+        <i class="icon-export">
+        </i>
+        <span class="share-link-text">
+         Share
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="unseen-observer-target">
+    </div>
+   </div>
+  </div>
+ </section>
+</li>
