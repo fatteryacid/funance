@@ -7,6 +7,10 @@
           {
             "make": "lexus",
             "model": "rcf"
+          },
+          {
+            "make": "lexus",
+            "model": "gsf"
           }
         ],
       "zip": "92606",

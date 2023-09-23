@@ -1,7 +1,10 @@
 import json
+from Logger import Logger
 from Nosy import Nosy
 import pandas as pd
 
+logger = Logger()
+logger.open_file()
 # Data scraping logic is handled within Nosy() object
 f = open("./webscraper_config.json")
 config = json.load(f)
@@ -24,4 +27,4 @@ data_frame = pd.DataFrame(raw_data)
 export_filename = "./raw_data/data_export_" + webscraper.get_extraction_date() + ".csv"
 data_frame.to_csv(export_filename)
 print(f"Data written to disk successfully")
-
+logger.write_to_file(f"Data written to disk under {export_filename} successfully.")

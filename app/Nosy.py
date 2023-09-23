@@ -91,6 +91,7 @@ class Nosy:
                     "listing_url": i.a["href"].strip(),
                     "fetch_ts": self.timestamp.strftime("%Y-%m-%d %H:%M:%S")
                 }
+                success_counter += 1
             except:
                 error_message = i.prettify()
                 self.logger.write_to_file(f"Error occurred while converting results. Issue HTML below:\n{error_message}")
@@ -99,9 +100,8 @@ class Nosy:
                 pass
             finally:
                 self.output_list.append(obj)
-                success_counter += 1
 
-        self.logger.write_to_file(f"Successfully written {success_counter} results out of {len(result_list)}.")
+        self.logger.write_to_file(f"Successfully converted {success_counter} results out of {len(result_list)}.")
 
     def fetch_data(self):
         for car in self.search_parameters["cars"]:
@@ -109,9 +109,10 @@ class Nosy:
             self.wait_for_conditions()
             time.sleep(15)  # for testing the theory that these wait conditions aren't waiting long enough
             self.cached_data = BeautifulSoup(self.driver.page_source, "html.parser")
-            self.driver.close()
             self.timestamp = datetime.now()
             self.convert_result(car)
+
+        self.driver.close()
 
 
     def get_data(self):
