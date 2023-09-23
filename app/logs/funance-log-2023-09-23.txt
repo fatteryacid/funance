@@ -1,15 +1,15 @@
-[2023-09-23 08:40:05] Webscraper configuration loaded.
-[2023-09-23 08:40:07] Identifier cm-results located successfully.
-[2023-09-23 08:40:07] Identifier cs-results located successfully.
-[2023-09-23 08:40:07] Identifier tc-results located successfully.
-[2023-09-23 08:40:07] Identifier ot-results located successfully.
-[2023-09-23 08:40:07] Identifier listing-link.source-link located successfully.
-[2023-09-23 08:40:07] Identifier badge__label.label--price located successfully.
-[2023-09-23 08:40:07] Identifier mileage located successfully.
-[2023-09-23 08:40:07] Identifier date located successfully.
-[2023-09-23 08:40:07] Identifier city located successfully.
-[2023-09-23 08:40:07] Identifier source-results.separate.results-loaded located successfully.
-[2023-09-23 08:40:23] Error occurred while converting results. Issue HTML below:
+[2023-09-23 11:53:09] Webscraper configuration loaded.
+[2023-09-23 11:53:11] Identifier cm-results located successfully.
+[2023-09-23 11:53:11] Identifier cs-results located successfully.
+[2023-09-23 11:53:11] Identifier tc-results located successfully.
+[2023-09-23 11:53:11] Identifier ot-results located successfully.
+[2023-09-23 11:53:11] Identifier listing-link.source-link located successfully.
+[2023-09-23 11:53:11] Identifier badge__label.label--price located successfully.
+[2023-09-23 11:53:11] Identifier mileage located successfully.
+[2023-09-23 11:53:11] Identifier date located successfully.
+[2023-09-23 11:53:11] Identifier city located successfully.
+[2023-09-23 11:53:11] Identifier source-results.separate.results-loaded located successfully.
+[2023-09-23 11:53:27] Error occurred while converting results. Issue HTML below:
 <li class="result-list-item">
  <section class="search-result cab card__basic" data-backend-sitecode="cab" data-listing-id="cab-KPQyedka">
   <div class="result-wrap">
@@ -33,21 +33,21 @@
       <div class="description-badges__auction-badge badge">
        <div>
         <div aria-expanded="false" class="badge__title static-tippy" data-tippy-content="&lt;h2&gt;&lt;i class='icon-hammer'&gt;&lt;/i&gt;Auction Listing&lt;/h2&gt;
-                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$24,000&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
+                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$25,000&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
          <i class="icon-hammer icon">
          </i>
         </div>
        </div>
        <div class="badge__labels">
         <div class="badge__label label--bid">
-         $24,000
+         $25,000
         </div>
         <div class="badge__label">
          <span class="info time-left">
           <i class="icon-stopwatch">
           </i>
           <span class="time-left__timer" data-end-date="1695837960">
-           4 days
+           3 days
           </span>
          </span>
         </div>
@@ -119,11 +119,235 @@
  </section>
 </li>
 
-[2023-09-23 08:40:23] Successfully written 89 results out of 89.
-[2023-09-23 08:40:23] Database connection successfully started.
-[2023-09-23 08:40:23] Database already initialized.
-[2023-09-23 08:40:23] Successfully ingested data_export_2023-09-23.csv.
-[2023-09-23 08:40:23] Successfully ran script 'process_and_insert_staging_data.sql'.
-[2023-09-23 08:40:23] Successfully ran script 'remove_from_raw.sql'.
-[2023-09-23 08:40:23] Successfully ran script 'insert_into_production.sql'.
-[2023-09-23 08:40:23] Successfully ran script 'remove_from_processed.sql'.
+[2023-09-23 11:53:27] Successfully converted 88 results out of 89.
+[2023-09-23 11:53:28] Identifier cm-results located successfully.
+[2023-09-23 11:53:28] Identifier cs-results located successfully.
+[2023-09-23 11:53:28] Identifier tc-results located successfully.
+[2023-09-23 11:53:28] Identifier ot-results located successfully.
+[2023-09-23 11:53:28] Identifier listing-link.source-link located successfully.
+[2023-09-23 11:53:28] Identifier badge__label.label--price located successfully.
+[2023-09-23 11:53:28] Identifier mileage located successfully.
+[2023-09-23 11:53:28] Identifier date located successfully.
+[2023-09-23 11:53:28] Identifier city located successfully.
+[2023-09-23 11:53:28] Identifier source-results.separate.results-loaded located successfully.
+[2023-09-23 11:53:43] Error occurred while converting results. Issue HTML below:
+<li class="result-list-item">
+ <section class="search-result cm card__basic" data-backend-sitecode="cm" data-listing-id="cm-04bc2e1e-5825-40da-bda1-f9227572f0b4">
+  <div class="result-wrap">
+   <a class="listing-link image-link" href="https://www.cars.com/vehicledetail/04bc2e1e-5825-40da-bda1-f9227572f0b4/?aff=atempest&amp;utm_campaign=atempest&amp;utm_source=autotempest&amp;utm_medium=trp&amp;utm_id=&amp;utm_trusted=TRUE" rel="nofollow" target="_blank">
+    <div class="image" data-img="https://thumb.autotempest.com/cm/JTHBP1BL7GA001747_04bc2e1e-5825-40da-bda1-f9227572f0b4_1acdd71cb87a670c16df833f792afb7b_0_e3c555e0fe5f4f71711ad6202c199e51.webp" data-img-fallback="https://platform.cstatic-images.com/xlarge/in/v2/4f1b7e78-ff1a-45b0-9082-2bfd0962b1cf/dd020e73-75c7-493a-9f44-98df5a5c8b0b/ZMABkuS_04zTNYM3CyaLYODFKYQ.jpg" data-img-placeholder="//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg" style='background-image: url("https://thumb.autotempest.com/cm/JTHBP1BL7GA001747_04bc2e1e-5825-40da-bda1-f9227572f0b4_1acdd71cb87a670c16df833f792afb7b_0_e3c555e0fe5f4f71711ad6202c199e51.webp"), url("//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg");'>
+    </div>
+   </a>
+   <div class="description-wrap">
+    <h2>
+     <span class="title-wrap listing-title">
+      <a class="listing-link source-link" href="https://www.cars.com/vehicledetail/04bc2e1e-5825-40da-bda1-f9227572f0b4/?aff=atempest&amp;utm_campaign=atempest&amp;utm_source=autotempest&amp;utm_medium=trp&amp;utm_id=&amp;utm_trusted=TRUE" rel="nofollow" target="_blank">
+       2016 Lexus GS F
+      </a>
+      <a class="logo-link" href="https://www.cars.com/vehicledetail/04bc2e1e-5825-40da-bda1-f9227572f0b4/?aff=atempest&amp;utm_campaign=atempest&amp;utm_source=autotempest&amp;utm_medium=trp&amp;utm_id=&amp;utm_trusted=TRUE">
+       <img alt="Cars.com" class="source-logo cm-logo" src="//static.autotempest.com/prod/build/main/img/source-logos/cm-logo.70c5d1e4.png"/>
+      </a>
+     </span>
+    </h2>
+    <div class="price-wrap">
+     <div class="description-badges">
+      <div class="description-badges__price_badge badge">
+       <div class="badge__title">
+        <i class="icon-tag icon">
+        </i>
+       </div>
+       <div class="badge__labels">
+        <div class="badge__label label--price">
+         $55,999
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="info-wrap">
+     <div class="info mileageDate">
+      <span class="date">
+       <i class="icon-clock">
+       </i>
+       Jul 24th
+      </span>
+     </div>
+     <div class="info location has-distance">
+      <span class="location-info-wrap">
+       <span class="city">
+        <i class="icon-direction">
+        </i>
+        Farmington, MN
+       </span>
+       <span class="distance">
+        (1512 mi. from 92606)
+       </span>
+      </span>
+      <span class="dealer-info-wrap">
+       <span class="dealerName">
+        <i class="icon-store">
+        </i>
+        Big Man Motors
+       </span>
+      </span>
+     </div>
+    </div>
+    <div class="details">
+     <span class="short">
+      2016 LEXUS GSF ================== 5.0L V
+     </span>
+     <span class="mid">
+      8 ENGINE AUTOMATIC 8-SPEED TRANSMISSION
+     </span>
+     <span class="long">
+      REAR-WHEEL
+     </span>
+     <span class="extra-long">
+      DRIVETRAIN 20 MPG COMBINED MILEAGE---- 27,702 LEATHER INTERIOR Super-
+     </span>
+     <span class="more has-details-mid has-details-long">
+      ...
+      <a class="listing-link" href="https://www.cars.com/vehicledetail/04bc2e1e-5825-40da-bda1-f9227572f0b4/?aff=atempest&amp;utm_campaign=atempest&amp;utm_source=autotempest&amp;utm_medium=trp&amp;utm_id=&amp;utm_trusted=TRUE" rel="nofollow" target="_blank">
+       Read More
+      </a>
+     </span>
+    </div>
+    <div class="inline-tools">
+     <div class="tools">
+      <div class="share-link inline-tool">
+       <a onclick="window.AT.shareListing(`cm`, `JTHBP1BL7GA001747`, `Lexus`, `gsf`)">
+        <i class="icon-export">
+        </i>
+        <span class="share-link-text">
+         Share
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="unseen-observer-target">
+    </div>
+   </div>
+  </div>
+ </section>
+</li>
+
+[2023-09-23 11:53:44] Data written to disk under ./raw_data/data_export_2023-09-23.csv successfully.
+[2023-09-23 11:53:43] Error occurred while converting results. Issue HTML below:
+<li class="result-list-item">
+ <section class="search-result cab card__basic" data-backend-sitecode="cab" data-listing-id="cab-rbbLknwD">
+  <div class="result-wrap">
+   <a class="listing-link image-link" href="https://carsandbids.com/auctions/rbbLknwD/2016-lexus-gs-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+    <div class="image" data-img="https://thumb.autotempest.com/cab/JTHBP1BL9GA000521_rbbLknwD_ee89bb58d780b85d57953f863a5f26b3_51400_07ca2355333981fa9ff6e678d3285de7.webp" data-img-fallback="https://media.carsandbids.com/cdn-cgi/image/width=540,quality=80/59339d5e07287c702e69307de910cceaa69c1d04/photos/370YGOMk-_IYyd3ghzS-(edit).jpg?t=169500359004" data-img-placeholder="//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg" style='background-image: url("https://thumb.autotempest.com/cab/JTHBP1BL9GA000521_rbbLknwD_ee89bb58d780b85d57953f863a5f26b3_51400_07ca2355333981fa9ff6e678d3285de7.webp"), url("//static.autotempest.com/prod/build/main/img/res-placeholder.4b1c365d.svg");'>
+    </div>
+   </a>
+   <div class="description-wrap">
+    <h2>
+     <span class="title-wrap listing-title">
+      <a class="listing-link source-link" href="https://carsandbids.com/auctions/rbbLknwD/2016-lexus-gs-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+       2016 Lexus GS F
+      </a>
+      <a class="logo-link" href="https://carsandbids.com/auctions/rbbLknwD/2016-lexus-gs-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search">
+       <img alt="Cars &amp; Bids" class="source-logo cab-logo" src="//static.autotempest.com/prod/build/main/img/source-logos/cab-logo.f73a38cb.png"/>
+      </a>
+     </span>
+    </h2>
+    <div class="price-wrap">
+     <div class="description-badges">
+      <div class="description-badges__auction-badge badge">
+       <div>
+        <div aria-expanded="false" class="badge__title static-tippy" data-tippy-content="&lt;h2&gt;&lt;i class='icon-hammer'&gt;&lt;/i&gt;Auction Listing&lt;/h2&gt;
+                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$40,250&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
+         <i class="icon-hammer icon">
+         </i>
+        </div>
+       </div>
+       <div class="badge__labels">
+        <div class="badge__label label--bid">
+         $40,250
+        </div>
+        <div class="badge__label">
+         <span class="info time-left">
+          <i class="icon-stopwatch">
+          </i>
+          <span class="time-left__timer" data-end-date="1695749400">
+           2 days
+          </span>
+         </span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="info-wrap">
+     <div class="info mileageDate">
+      <span class="mileage">
+       <i class="icon-gauge">
+       </i>
+       51,400 mi.
+      </span>
+      <span class="date">
+       <i class="icon-clock">
+       </i>
+       4 days ago
+      </span>
+     </div>
+     <div class="info location has-distance">
+      <span class="location-info-wrap">
+       <span class="city">
+        <i class="icon-direction">
+        </i>
+        Tampa, FL
+       </span>
+       <span class="distance">
+        (2122 mi. from 92606)
+       </span>
+      </span>
+     </div>
+    </div>
+    <div class="details">
+     <span class="short">
+      467-hp V8, Torque-Vectoring Differential
+     </span>
+     <span class="mid">
+      , Florida-Owned, Mostly Unmodified
+     </span>
+     <span class="long">
+     </span>
+     <span class="extra-long">
+     </span>
+     <span class="more has-details-mid">
+      ...
+      <a class="listing-link" href="https://carsandbids.com/auctions/rbbLknwD/2016-lexus-gs-f?utm_source=autotempest&amp;utm_medium=referral&amp;utm_campaign=at_search" rel="nofollow" target="_blank">
+       Read More
+      </a>
+     </span>
+    </div>
+    <div class="inline-tools">
+     <div class="tools">
+      <div class="share-link inline-tool">
+       <a onclick="window.AT.shareListing(`cab`, `JTHBP1BL9GA000521`, `Lexus`, `gsf`)">
+        <i class="icon-export">
+        </i>
+        <span class="share-link-text">
+         Share
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="unseen-observer-target">
+    </div>
+   </div>
+  </div>
+ </section>
+</li>
+
+[2023-09-23 11:53:43] Successfully converted 21 results out of 23.
+[2023-09-23 11:53:44] Database connection successfully started.
+[2023-09-23 11:53:44] Database already initialized.
+[2023-09-23 11:53:44] Successfully ingested data_export_2023-09-23.csv.
+[2023-09-23 11:53:44] Successfully ran script 'process_and_insert_staging_data.sql'.
+[2023-09-23 11:53:44] Successfully ran script 'remove_from_raw.sql'.
+[2023-09-23 11:53:44] Successfully ran script 'insert_into_production.sql'.
+[2023-09-23 11:53:44] Successfully ran script 'remove_from_processed.sql'.
