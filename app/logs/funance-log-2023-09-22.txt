@@ -1,3 +1,15 @@
+[2023-09-22 20:35:28] Webscraper configuration loaded.
+[2023-09-22 20:35:29] Identifier cm-results located successfully.
+[2023-09-22 20:35:29] Identifier cs-results located successfully.
+[2023-09-22 20:35:29] Identifier tc-results located successfully.
+[2023-09-22 20:35:29] Identifier ot-results located successfully.
+[2023-09-22 20:35:29] Identifier listing-link.source-link located successfully.
+[2023-09-22 20:35:29] Identifier badge__label.label--price located successfully.
+[2023-09-22 20:35:29] Identifier mileage located successfully.
+[2023-09-22 20:35:29] Identifier date located successfully.
+[2023-09-22 20:35:29] Identifier city located successfully.
+[2023-09-22 20:35:29] Identifier source-results.separate.results-loaded located successfully.
+[2023-09-22 20:35:45] Error occurred while converting results. Issue HTML below:
 <li class="result-list-item">
  <section class="search-result cab card__basic" data-backend-sitecode="cab" data-listing-id="cab-KPQyedka">
   <div class="result-wrap">
@@ -21,14 +33,14 @@
       <div class="description-badges__auction-badge badge">
        <div>
         <div aria-expanded="false" class="badge__title static-tippy" data-tippy-content="&lt;h2&gt;&lt;i class='icon-hammer'&gt;&lt;/i&gt;Auction Listing&lt;/h2&gt;
-                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$21,750&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
+                                                        &lt;p&gt;This is an auction listing with a starting bid of &lt;strong&gt;$24,000&lt;/strong&gt;.&lt;/p&gt;&lt;p class='disclaimer'&gt;If you wish to exclude auction listings from your search, set the &lt;strong&gt;Sale Type&lt;/strong&gt; filter to &lt;strong&gt;Classified&lt;/strong&gt; and run your search again.&lt;/p&gt;" tabindex="0">
          <i class="icon-hammer icon">
          </i>
         </div>
        </div>
        <div class="badge__labels">
         <div class="badge__label label--bid">
-         $21,750
+         $24,000
         </div>
         <div class="badge__label">
          <span class="info time-left">
@@ -53,7 +65,7 @@
       <span class="date">
        <i class="icon-clock">
        </i>
-       2 days ago
+       3 days ago
       </span>
      </div>
      <div class="info location has-distance">
@@ -106,3 +118,12 @@
   </div>
  </section>
 </li>
+
+[2023-09-22 20:35:45] Successfully written 86 results out of 86.
+[2023-09-22 20:35:45] Database connection successfully started.
+[2023-09-22 20:35:45] Database already initialized.
+[2023-09-22 20:35:45] Successfully ingested data_export_2023-09-22.csv.
+[2023-09-22 20:35:45] Successfully ran script 'process_and_insert_staging_data.sql'.
+[2023-09-22 20:35:45] Successfully ran script 'remove_from_raw.sql'.
+[2023-09-22 20:35:45] Successfully ran script 'insert_into_production.sql'.
+[2023-09-22 20:35:45] Successfully ran script 'remove_from_processed.sql'.
