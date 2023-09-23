@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
+from Logger import Logger
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -29,6 +30,9 @@ class Nosy:
         self.timestamp = None
 
         self.output_list = []
+        self.logger = Logger()
+        self.logger.open_file()
+        self.logger.write_to_file("Webscraper configuration loaded.")
 
     def get_extraction_date(self):
         return self.timestamp.strftime("%Y-%m-%d")
@@ -54,6 +58,7 @@ class Nosy:
 
             WebDriverWait(self.driver, self.max_load_time).until(EC.visibility_of_element_located((self.get_element_used(load_condition["tag"]), load_condition["identifier"])))
             print(f"Identifier {identifier} located")
+            self.logger.write_to_file(f"Identifier {identifier} located successfully.")
 
     def build_url(self, car_metadata):
         # Set up constants, only thing that needs to change in the future
@@ -68,6 +73,7 @@ class Nosy:
 
     def convert_result(self, car_metadata):
         result_list = self.cached_data.find_all("li", class_="result-list-item")
+        success_counter = 0
 
         for i in result_list:
             try:
@@ -86,11 +92,16 @@ class Nosy:
                     "fetch_ts": self.timestamp.strftime("%Y-%m-%d %H:%M:%S")
                 }
             except:
-                error = open(f"./error_log/error_log_{self.timestamp.strftime('%Y-%m-%d')}.txt", "w")
-                error.write(i.prettify())
+                error_message = i.prettify()
+                self.logger.write_to_file(f"Error occurred while converting results. Issue HTML below:\n{error_message}")
+                #error = open(f"./error_log/error_log_{self.timestamp.strftime('%Y-%m-%d')}.txt", "w")
+                #error.write(i.prettify())
                 pass
             finally:
                 self.output_list.append(obj)
+                success_counter += 1
+
+        self.logger.write_to_file(f"Successfully written {success_counter} results out of {len(result_list)}.")
 
     def fetch_data(self):
         for car in self.search_parameters["cars"]:

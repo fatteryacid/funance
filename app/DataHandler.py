@@ -1,4 +1,5 @@
 import json
+from Logger import Logger
 import os
 import psycopg2 as pg
 
@@ -18,6 +19,10 @@ class DataHandler:
         )
         self.cursor = self.connector.cursor()
 
+        self.logger = Logger()
+        self.logger.open_file()
+        self.logger.write_to_file("Database connection successfully started.")
+
     def execute_sequential_scripts(self, directory):
         for script in os.listdir(directory):
             f = os.path.join(directory, script)
@@ -27,48 +32,53 @@ class DataHandler:
                 self.cursor.execute(j)
                 self.connector.commit()
                 print(f"successfully executed script: {f}")
+                self.logger.write_to_file(f"Successfully excecuted script: '{f}'.")
 
     def update_config(self):
+        self.logger.write_to_file("Instructed to update database configuration.")
+        self.logger.write_to_file(f"\tBEFORE DATABASE INIT STATUS: {self.database_initialization_status}.")
+        self.logger.write_to_file(f"\tBEFORE DATABASE METADATA: {self.database_metadata}.")
+
         compiled_config = {
             "initialized": self.database_initialization_status,
             "connection_metadata": self.database_metadata
         }
-
         out_config = json.dumps(compiled_config, indent=4)
 
         with open("./data_config.json", "w") as outfile:
             outfile.write(out_config)
 
-        print("successfully updated config file")
+        self.logger.write_to_file("Successfully updated configuration.")
 
     def initialize_database(self):
         if self.database_initialization_status is True:
-            print("database already initialized")
+            self.logger.write_to_file(f"Database already initialized.")
             return
 
-        print("database is not initialized. initializing..")
+        self.logger.write_to_file("Database not initialized. Creating new database.")
         self.execute_sequential_scripts(self.init_directory)
-        print("database initialized. updating status..")
         self.database_initialization_status = True
         self.update_config()
+        self.logger.write_to_file("Successfully initialized database.")
 
     def reset_database(self):
         # This removes completely purges the database and recreates tables
         while True:
+            self.logger.write_to_file("Reset database initialized. Waiting for user prompt.")
             user_input = input(f"WARNING! PROGRAM IS TRYING TO RESET DATABASE. PRESS y TO CONFIRM OR n TO HALT. ")
             if user_input == "y":
-
-                print(f"Confirmed deletion..")
-
+                self.logger.write_to_file("User confirmed database reset.")
                 f = open("./database/delete/delete_all.sql", "r").read()
                 self.cursor.execute(f)
                 self.connector.commit()
 
                 self.database_initialization_status = False
                 self.initialize_database()
+                self.logger.write_to_file("Successfully reset database.")
                 return True
 
             elif user_input == "n":
+                self.logger.write_to_file("User denied databsae reset.")
                 break
 
     def insert_data(self, data_filename):
@@ -93,6 +103,7 @@ class DataHandler:
 
         self.cursor.execute(command)
         self.connector.commit()
+        self.logger.write_to_file(f"Successfully ingested {data_filename}.")
 
     def perform_transformations(self):
         scripts = [
@@ -108,7 +119,7 @@ class DataHandler:
             f = open(path, "r").read()
             self.cursor.execute(f)
             self.connector.commit()
-            print(f"successfully ran {i}")
+            self.logger.write_to_file(f"Successfully ran script '{i}'.")
 
 
 
