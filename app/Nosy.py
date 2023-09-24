@@ -8,6 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from random import random
 import time
 from webdriver_manager.firefox import GeckoDriverManager
 
@@ -16,7 +17,7 @@ class Nosy:
     def __init__(self, config):
         self.search_parameters = config["search_parameters"]
         self.platform_metadata = config["platform_metadata"]
-        self.max_load_time = 20
+        self.max_load_time = 30
         
         self.vendors_loaded = False
         self.metrics_loaded = False
@@ -33,6 +34,10 @@ class Nosy:
         self.logger = Logger()
         self.logger.open_file()
         self.logger.write_to_file("Webscraper configuration loaded.")
+
+    def random_wait(self):
+        seconds_waited = round(random() * 20)
+        time.sleep(seconds_waited)
 
     def get_extraction_date(self):
         return self.timestamp.strftime("%Y-%m-%d")
@@ -106,12 +111,14 @@ class Nosy:
     def fetch_data(self):
         for car in self.search_parameters["cars"]:
             self.driver.get(self.build_url(car))
+            self.random_wait()
             self.wait_for_conditions()
             time.sleep(15)  # for testing the theory that these wait conditions aren't waiting long enough
             self.cached_data = BeautifulSoup(self.driver.page_source, "html.parser")
             self.timestamp = datetime.now()
             self.convert_result(car)
 
+        self.random_wait()
         self.driver.close()
 
 
