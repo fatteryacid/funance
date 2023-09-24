@@ -56,7 +56,6 @@ class Nosy:
 
     def wait_for_conditions(self):
         # Waiting for all conditions specified in config file
-        # This is only for autotempest for now
         for load_condition in self.platform_metadata["autotempest"]["loads"]:
             by_locator = self.get_element_used(load_condition["tag"])
             identifier = load_condition["identifier"]
@@ -66,8 +65,6 @@ class Nosy:
             self.logger.write_to_file(f"Identifier {identifier} located successfully.")
 
     def build_url(self, car_metadata):
-        # Set up constants, only thing that needs to change in the future
-        # are more car support
         base_url = self.platform_metadata["autotempest"]["base_url"]
         _zip = self.search_parameters["zip"]
         localization = self.search_parameters["localization"]
@@ -82,8 +79,6 @@ class Nosy:
 
         for i in result_list:
             try:
-                # need to investigate why some pieces of data are NOT coming in with prices
-                # and handle accordingly
                 obj = {
                     "year_string": i.find("a", class_="listing-link source-link").get_text().strip(),
                     "make": car_metadata["make"],
@@ -100,8 +95,6 @@ class Nosy:
             except:
                 error_message = i.prettify()
                 self.logger.write_to_file(f"Error occurred while converting results. Issue HTML below:\n{error_message}")
-                #error = open(f"./error_log/error_log_{self.timestamp.strftime('%Y-%m-%d')}.txt", "w")
-                #error.write(i.prettify())
                 pass
             finally:
                 self.output_list.append(obj)
@@ -110,10 +103,11 @@ class Nosy:
 
     def fetch_data(self):
         for car in self.search_parameters["cars"]:
+            self.logger.write_to_file(f"Fetching results for {car['make']} {car['model']}.")
             self.driver.get(self.build_url(car))
             self.random_wait()
             self.wait_for_conditions()
-            time.sleep(15)  # for testing the theory that these wait conditions aren't waiting long enough
+            time.sleep(15)              # Addiitonal wait to ensure all dynamic ul elements loaded
             self.cached_data = BeautifulSoup(self.driver.page_source, "html.parser")
             self.timestamp = datetime.now()
             self.convert_result(car)
