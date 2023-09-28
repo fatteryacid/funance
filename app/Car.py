@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-@dataclass
+@dataclass(frozen=True)    #Destination is in sets, so each Car() object needs to be immutable
 class Car:
     make: str
     model: str

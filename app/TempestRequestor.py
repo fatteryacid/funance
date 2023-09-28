@@ -9,11 +9,11 @@ class TempestRequestor(GenericRequestor):
     def parse_response(self):
         results = self.response["results"]
         self.logger.write_to_file(f"Converting {len(results)} results to Car objects")
-        return_list = []
+        return_set = set()
 
         for listing in results:
             try:
-                return_list.append(
+                return_set.add(
                     Car(
                         make = listing["make"],
                         model = listing["model"],
@@ -31,7 +31,7 @@ class TempestRequestor(GenericRequestor):
                 )
             except Exception as e:
                 self.logger.write_to_file("Encountered error while converting to Car objects.")
-                self.logger.write_to_file(f"Error:\n{e}")
+                self.logger.write_to_file(f"Error: {e}")
                 self.logger.write_to_file(f"Occurred at:\n{listing}")
 
-        return return_list
+        return return_set
