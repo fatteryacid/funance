@@ -164,4 +164,5 @@ app/raw_data/*
 user_data_config_server.json
 user_data_config_local.json
 user_data_config.json
+user_requests_config.json
 logs/*
