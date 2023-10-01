@@ -25,6 +25,13 @@ generate_metadata AS (
     -- Also create tag to separate dates that require arithmetic VS straight casts
     SELECT 
         *,
+        LOWER(make)                                                         AS preprocess_make,
+        CASE
+            WHEN model LIKE '%RC%' THEN 'rcf'   -- This is a temp fix, will need to reconsider how to control these points
+            WHEN model LIKE '%GS%' THEN 'gsf'
+            WHEN model LIKE '%IS%' THEN 'is500'
+            ELSE model
+        END                                                                 AS preprocess_model,
         SPLIT_PART(_location, ',', 1)                                       AS preprocess_city,
         SPLIT_PART(_location, ',', 2)                                       AS preprocess_state,
         CASE
@@ -62,8 +69,8 @@ arithmetic_date_set AS (
     -- Final set for arithmetic-supportable data points
     SELECT
         CAST(_year AS INTEGER)                                                                  AS model_year,
-        make,
-        model,
+        preprocess_make                                                                         AS make,
+        preprocess_model                                                                        AS model,
         vin,
         TRIM(details)                                                                           AS model_description,
         CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)    AS price,
@@ -108,8 +115,8 @@ convert_date_set AS (
     -- Final set for data-casted data points
     SELECT
         CAST(_year AS INTEGER)                                                                  AS model_year,
-        make,
-        model,
+        preprocess_make                                                                         AS make,
+        preprocess_model                                                                        AS model,
         vin,
         TRIM(details)                                                                           AS model_description,
         CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)    AS price,
