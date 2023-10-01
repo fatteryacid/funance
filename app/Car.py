@@ -13,5 +13,6 @@ class Car:
     price: str
     url: str
     listing_id: str
+    listing_date: Optional[str]
     details: Optional[str]
     fetch_ts: str
