@@ -1,0 +1,96 @@
+{
+  "implicit_wait_time": 20,
+  "search_parameters": 
+    {
+      "cars":
+        [
+          {
+            "make": "lexus",
+            "model": "rcf"
+          },
+          {
+            "make": "lexus",
+            "model": "gsf"
+          },
+          {
+            "make": "lexus",
+            "model": "is500"
+          }
+        ],
+      "zip": "92606",
+      "localization": "country",
+      "title": "clean"
+    },
+  "platform_metadata":
+    {
+      "autotempest":
+        {
+          "base_url": "https://www.autotempest.com/results?",
+          "loads": 
+            [
+              {
+                "title": "Cars.com results",
+                "tag": "ID",
+                "identifier": "cm-results",
+                "required": true
+              }, 
+              {
+                "title": "CarSoup results",
+                "tag": "ID",
+                "identifier": "cs-results",
+                "required": false
+              }, 
+              {
+                "title": "TrueCar results",
+                "tag": "ID",
+                "identifier": "tc-results",
+                "required": true
+              }, 
+              {
+                "title": "Other results",
+                "tag": "ID",
+                "identifier": "ot-results",
+                "required": false
+              },
+              {
+                "title": "Year Name",
+                "tag": "CLASS_NAME",
+                "identifier": "listing-link.source-link",
+                "required": true
+              },
+              {
+                "title": "Price",
+                "tag": "CLASS_NAME",
+                "identifier":"badge__label.label--price",
+                "required": true
+              },
+              {
+                "title": "Mileage",
+                "tag": "CLASS_NAME",
+                "identifier": "mileage",
+                "required": true
+              },
+              {
+                "title": "Listing date",
+                "tag": "CLASS_NAME",
+                "identifier": "date",
+                "required": true
+              },
+              {
+                "title": "Listing city",
+                "tag": "CLASS_NAME",
+                "identifier": "city",
+                "required": true
+              },
+              {
+                "title": "Source Reults",
+                "tag": "CLASS_NAME",
+                "identifier": "source-results.separate.results-loaded",
+                "required": true
+              }
+            ]
+        }
+    }
+
+
+}
