@@ -3,10 +3,12 @@ from GenericRequestor import GenericRequestor
 from Logger import Logger
 
 class TempestRequestor(GenericRequestor):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, logger):
+        super().__init__(logger)
 
     def parse_response(self):
+        """Tempest-specific parser for received JSON. Returns a hash set."""
+        
         results = self.response["results"]
         self.logger.write_to_file(f"Converting {len(results)} results to Car objects")
         return_set = set()
@@ -25,6 +27,7 @@ class TempestRequestor(GenericRequestor):
                         price = listing["price"],
                         url = listing["url"],
                         listing_id = listing["id"],
+                        listing_date = listing["date"],
                         details = listing["details"],
                         fetch_ts = self.get_timestamp()
                     )
