@@ -49,6 +49,8 @@ generate_metadata AS (
         END                                                                 AS listing_date_requires_arithmetic,
         CAST(fetch_ts AS TIMESTAMP)                                         AS preprocess_fetch_ts
     FROM staging_raw_data
+    WHERE 1=1
+        AND CAST(fetch_ts AS DATE) = CURRENT_DATE   -- Limit copy to only current date
 ),
 
 arithmetic_date_number_days_ago AS (

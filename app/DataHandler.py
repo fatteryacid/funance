@@ -42,7 +42,7 @@ class DataHandler:
             '{car_object.year}',
             '{car_object.vin}',
             '{car_object.location_zipcode}',
-            '{car_object.location}',
+            '{car_object.location.replace("'", "")}',
             '{car_object.mileage}',
             '{car_object.price}',
             '{car_object.url}',
