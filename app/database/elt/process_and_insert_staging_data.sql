@@ -27,7 +27,7 @@ generate_metadata AS (
         *,
         LOWER(make)                                                         AS preprocess_make,
         CASE
-            WHEN model LIKE '%RC%' THEN 'rcf'   -- This is a temp fix, will need to reconsider how to control these points
+            WHEN model LIKE '%RC%' THEN 'rcf'   -- This is a temp fix, will need to reconsider how to control these points in more scalable manner
             WHEN model LIKE '%GS%' THEN 'gsf'
             WHEN model LIKE '%IS%' THEN 'is500'
             ELSE model

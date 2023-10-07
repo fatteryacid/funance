@@ -18,7 +18,7 @@ class TempestRequestor(GenericRequestor):
                 return_set.add(
                     Car(
                         make = listing["make"],
-                        model = listing["model"],
+                        model = listing["backendModel"],
                         year = listing["year"],
                         vin = listing["vin"],
                         location_zipcode = listing["locationCode"],
