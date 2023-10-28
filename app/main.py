@@ -43,9 +43,9 @@ def main():
     [handler.insert_data(x) for x in all_listings]
 
     handler.commit_changes()
-    handler.process_raw_data()
-    handler.load_to_production()
-    handler.commit_changes()
+    #handler.process_raw_data()
+    #handler.load_to_production()
+    #handler.commit_changes()
     handler.close()
 
 if __name__ == '__main__':
