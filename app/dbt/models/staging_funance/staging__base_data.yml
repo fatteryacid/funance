@@ -1,0 +1,29 @@
+verison: 1
+
+sources:
+  - name: staging_funance
+    description: Current snapshot of raw_data, transformed for technical use
+    tables:
+      - name: base_data
+        columns:
+          - name: model_year
+          - name: price
+          - name: mileage
+          - name: listing_zip
+          - name: listing_date
+          - name: fetch_ts
+            tests:
+              - not_null
+          - name: listing_url
+          - name: listing_city
+          - name: listing_state
+          - name: make
+          - name: model
+          - name: vin
+          - name: model_description
+          - name: listing_id
+          - name: pk_id
+            tests:
+              - not_null
+              - unique
+

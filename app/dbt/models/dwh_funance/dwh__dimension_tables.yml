@@ -1,0 +1,46 @@
+verison: 1
+
+sources:
+  - name: dim_tables
+    schema: dwh_funance
+    tables:
+      - name: dim_color
+        columns:
+          - name: color_id
+            tests:
+              - not_null
+          - name: color_name
+
+      - name: dim_location
+        columns:
+          - name: location_id
+            tests:
+              - not_null
+              - unique
+          - name: state_name
+          - name: state_abbreviation
+
+      - name: dim_transmission
+        columns:
+          - name: transmission_id
+            tests:
+              - not_null
+              - unique
+          - name: transmission_type
+
+      - name: dim_make
+        columns:
+          - name: make_id
+            tests:
+              - make_id
+              - make_name
+          - name: make_name
+
+      - name: dim_model
+        columns:
+          - name: model_id
+            tests:
+              - not_null
+              - unique
+          - name: make_id
+          - name: model_name

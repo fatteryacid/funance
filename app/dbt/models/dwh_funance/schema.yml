@@ -1,0 +1,3 @@
+models:
+  - name: dwh__fact_set
+    schema: dwh_funance
