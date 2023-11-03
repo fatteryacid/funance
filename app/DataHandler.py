@@ -35,7 +35,7 @@ class DataHandler:
         """Begins a transaction block of INSERT INTO statements for each individual listing. Function DOES NOT commit changes."""
 
         command = f'''
-        INSERT INTO staging_raw_data (make, model, _year, vin, location_zipcode, _location, mileage, price, _url, listing_id, listing_date, details, fetch_ts)
+        INSERT INTO staging_funance.raw_data (make, model, _year, vin, location_zipcode, _location, mileage, price, _url, listing_id, listing_date, details, fetch_ts)
         VALUES(
             '{car_object.make}',
             '{car_object.model}',

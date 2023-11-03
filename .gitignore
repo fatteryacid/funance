@@ -166,3 +166,6 @@ user_data_config_local.json
 user_data_config.json
 user_requests_config.json
 logs/*
+
+profiles.yml
+.user.yml

@@ -1,0 +1,65 @@
+CREATE TABLE IF NOT EXISTS dwh_funance.dim_location
+(
+    location_id         SERIAL,
+    state_name          TEXT,
+    state_abbreviation  CHAR(2),
+
+    PRIMARY KEY (location_id)
+)
+;
+
+-- Defaults
+INSERT INTO dwh_funance.dim_location
+VALUES
+    (DEFAULT, 'Alabama', 'AL'),
+    (DEFAULT, 'Alaska', 'AK'),
+    (DEFAULT, 'Arizona', 'AZ'),
+    (DEFAULT, 'Arkansas', 'AR'),
+    (DEFAULT, 'California', 'CA'),
+    (DEFAULT, 'Colorado', 'CO'),
+    (DEFAULT, 'Connecticut', 'CT'),
+    (DEFAULT, 'Delaware', 'DE'),
+    (DEFAULT, 'District of Columbia', 'DC'),
+    (DEFAULT, 'Florida', 'FL'),
+    (DEFAULT, 'Georgia', 'GA'),
+    (DEFAULT, 'Hawaii', 'HI'),
+    (DEFAULT, 'Idaho', 'ID'),
+    (DEFAULT, 'Illinois', 'IL'),
+    (DEFAULT, 'Indiana', 'IN'),
+    (DEFAULT, 'Iowa', 'IA'),
+    (DEFAULT, 'Kansas', 'KS'),
+    (DEFAULT, 'Kentucky', 'KY'),
+    (DEFAULT, 'Louisiana', 'LA'),
+    (DEFAULT, 'Maine', 'ME'),
+    (DEFAULT, 'Montana', 'MT'),
+    (DEFAULT, 'Nebraska', 'NE'),
+    (DEFAULT, 'Nevada', 'NV'),
+    (DEFAULT, 'New Hampshire', 'NH'),
+    (DEFAULT, 'New Jersey', 'NJ'),
+    (DEFAULT, 'New Mexico', 'NM'),
+    (DEFAULT, 'New York', 'NY'),
+    (DEFAULT, 'North Carolina', 'NC'),
+    (DEFAULT, 'North Dakota', 'ND'),
+    (DEFAULT, 'Ohio', 'OH'),
+    (DEFAULT, 'Oklahoma', 'OK'),
+    (DEFAULT, 'Oregon', 'OR'),
+    (DEFAULT, 'Maryland', 'MD'),
+    (DEFAULT, 'Massachusetts', 'MA'),
+    (DEFAULT, 'Michigan', 'MI'),
+    (DEFAULT, 'Minnesota', 'MN'),
+    (DEFAULT, 'Mississippi', 'MS'),
+    (DEFAULT, 'Missouri', 'MO'),
+    (DEFAULT, 'Pennsylvania', 'PA'),
+    (DEFAULT, 'Rhode Island', 'RI'),
+    (DEFAULT, 'South Carolina', 'SC'),
+    (DEFAULT, 'South Dakota', 'SD'),
+    (DEFAULT, 'Tennessee', 'TN'),
+    (DEFAULT, 'Texas', 'TX'),
+    (DEFAULT, 'Utah', 'UT'),
+    (DEFAULT, 'Vermont', 'VT'),
+    (DEFAULT, 'Virginia', 'VA'),
+    (DEFAULT, 'Washington', 'WA'),
+    (DEFAULT, 'West Virginia', 'WV'),
+    (DEFAULT, 'Wisconsin', 'WI'),
+    (DEFAULT, 'Wyoming', 'WY')
+;
