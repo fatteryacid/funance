@@ -21,3 +21,6 @@ models:
     dwh_funance:
       materialized: table
       +schema: dwh_funance
+    rpt_funance:
+      materialized: view
+      +schema: rpt_funance
