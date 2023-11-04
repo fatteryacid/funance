@@ -70,20 +70,20 @@ arithmetic_date_number_days_ago AS (
 arithmetic_date_set AS (
     -- Final set for arithmetic-supportable data points
     SELECT
-        CAST(_year AS INTEGER)                                                                  AS model_year,
-        preprocess_make                                                                         AS make,
-        preprocess_model                                                                        AS model,
+        CAST(_year AS INTEGER)                                                                          AS model_year,
+        preprocess_make                                                                                 AS make,
+        preprocess_model                                                                                AS model,
         vin,
-        TRIM(details)                                                                           AS model_description,
-        CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)    AS price,
-        CAST(preprocess_mileage AS INTEGER)                                                     AS mileage,
-        TRIM(preprocess_city)                                                                   AS listing_city,
-        TRIM(preprocess_state)                                                                  AS listing_state,
-        CAST(TRIM(preprocess_zip) AS INTEGER)                                                   AS listing_zip,
-        CAST(preprocess_fetch_ts - CAST(number_days || ' ' || 'DAY' AS INTERVAL) AS DATE)       AS listing_date,
+        TRIM(details)                                                                                   AS model_description,
+        CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)            AS price,
+        CAST(preprocess_mileage AS INTEGER)                                                             AS mileage,
+        TRIM(preprocess_city)                                                                           AS listing_city,
+        TRIM(preprocess_state)                                                                          AS listing_state,
+        CAST(CASE WHEN TRIM(preprocess_zip) = '' THEN NULL ELSE TRIM(preprocess_zip) END AS INTEGER)    AS listing_zip,
+        CAST(preprocess_fetch_ts - CAST(number_days || ' ' || 'DAY' AS INTERVAL) AS DATE)               AS listing_date,
         listing_id,
-        TRIM(_url)                                                                              AS listing_url,
-        preprocess_fetch_ts                                                                     AS fetch_ts
+        TRIM(_url)                                                                                      AS listing_url,
+        preprocess_fetch_ts                                                                             AS fetch_ts
     FROM arithmetic_date_number_days_ago
 ),
 
@@ -116,20 +116,20 @@ convert_date_metadata AS (
 convert_date_set AS (
     -- Final set for data-casted data points
     SELECT
-        CAST(_year AS INTEGER)                                                                  AS model_year,
-        preprocess_make                                                                         AS make,
-        preprocess_model                                                                        AS model,
+        CAST(_year AS INTEGER)                                                                          AS model_year,
+        preprocess_make                                                                                 AS make,
+        preprocess_model                                                                                AS model,
         vin,
-        TRIM(details)                                                                           AS model_description,
-        CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)    AS price,
-        CAST(preprocess_mileage AS INTEGER)                                                     AS mileage,
-        TRIM(preprocess_city)                                                                   AS listing_city,
-        TRIM(preprocess_state)                                                                  AS listing_state,
-        CAST(TRIM(preprocess_zip) AS INTEGER)                                                   AS listing_zip,
-        CAST(year_number || '-' || month_number || '-' || day_number AS DATE)                   AS listing_date,
+        TRIM(details)                                                                                   AS model_description,
+        CAST(CASE WHEN preprocess_price = '' THEN NULL ELSE preprocess_price END AS NUMERIC)            AS price,
+        CAST(preprocess_mileage AS INTEGER)                                                             AS mileage,
+        TRIM(preprocess_city)                                                                           AS listing_city,
+        TRIM(preprocess_state)                                                                          AS listing_state,
+        CAST(CASE WHEN TRIM(preprocess_zip) = '' THEN NULL ELSE TRIM(preprocess_zip) END AS INTEGER)    AS listing_zip,
+        CAST(year_number || '-' || month_number || '-' || day_number AS DATE)                           AS listing_date,
         listing_id,
-        TRIM(_url)                                                                              AS listing_url,
-        preprocess_fetch_ts                                                                     AS fetch_ts
+        TRIM(_url)                                                                                      AS listing_url,
+        preprocess_fetch_ts                                                                             AS fetch_ts
     FROM convert_date_metadata
 ),
 

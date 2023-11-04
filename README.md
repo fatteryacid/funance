@@ -9,6 +9,9 @@ More details below!
 If you're interested in using this application, you'll first have do the following:
 - Provide a Postgres database instance
 - Run the setup scripts for default dimension tables in `database/`
+    1. `schemas.sql`
+    2. `staging__funance_raw_data.sql`
+    3. All `dwh_funance` scripts, make sure you run `dim_make` before `dim_model` due reference constraints.
 
 Then build a virtual environment using `requirements.txt` and run `app/run.sh`
 This will:
