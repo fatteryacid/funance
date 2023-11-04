@@ -12,6 +12,7 @@ data_cleaning_layer AS (
             WHEN model = 'rcf' THEN 'rc_f'   -- This is a temp fix, will need to standardize these model name representation in the scraper
             WHEN model = 'gsf' THEN 'gs_f'
             WHEN model = 'is500' THEN 'is_500'
+            WHEN model = 'civictyper' THEN 'civic_type_r'
             ELSE model
         END                                                                 AS preprocess_model,
         SPLIT_PART(_location, ',', 1)                                       AS preprocess_city,
@@ -96,7 +97,7 @@ date_calculation_metadata AS (
 pruned_set AS (
     -- Final set for arithmetic-supportable data points
     SELECT
-        model_year,
+        model_year::INT,
         make,
         model,
         vin,
