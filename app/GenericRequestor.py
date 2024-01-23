@@ -34,8 +34,12 @@ class GenericRequestor:
         else:
             self.logger.write_to_file(f"GET request status {response_obj.status_code}")
             self.response = response_obj.json()
+
+    def get_json_response(self):
+        """Converts response attribute with JSON representations."""
+        return self.response.json
         
     def parse_response(self, response_dict):
-        """Abstract method to be modified by downstream children"""
+        """This method will be deprecated since we are now dumping raw JSON into the database landing site."""
 
         pass
