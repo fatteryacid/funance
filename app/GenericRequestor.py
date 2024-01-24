@@ -8,8 +8,15 @@ class GenericRequestor:
     
     def __init__(self, logger):
         self.response = None
+        self.backend_model = None
         self.timestamp = datetime.now()
         self.logger = logger    # implement this everywhere else!
+
+    def set_backend_model(self, backend_model):
+        self.backend_model = backend_model
+
+    def get_backend_model(self):
+        return self.backend_model
 
     def get_timestamp(self):
         """Returns string of timestamp in YYYY-MM-DD HH:MM:SS format"""
@@ -21,9 +28,11 @@ class GenericRequestor:
 
         return self.timestamp.strftime("%Y-%m-%d")
 
+
     def fetch_data(self, endpoint):
         """Generic method to make GET request. Returns nothing, but sets response object"""
 
+        self.set_backend_model(endpoint[0])
         url = endpoint[1]
         header = json.loads(endpoint[2])
 
@@ -38,7 +47,8 @@ class GenericRequestor:
 
     def get_json_response(self):
         """Returns tuple of JSON string data and timestamp"""
+        c = self.get_backend_model()
         d = json.dumps(self.response.json()).replace("'", "")
         t = self.get_timestamp()
-        return (d, t)
+        return (c, d, t)
         

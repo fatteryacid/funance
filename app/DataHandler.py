@@ -35,10 +35,11 @@ class DataHandler:
         """Begins a transaction block of INSERT INTO statements for each individual listing. Function DOES NOT commit changes."""
 
         command = f'''
-        INSERT INTO landing.landing_site
+        INSERT INTO raw_funance.landing_site
         VALUES(
             '{data[0]}',
-            '{data[1]}'
+            '{data[1]}',
+            '{data[2]}'
         );
         '''
 
@@ -51,6 +52,7 @@ class DataHandler:
         self.connector.close()
         self.logger.write_to_file("Successfully performed transformation and load scripts, closing connection.")
 
+    #TODO: Remove these items and put them into a setup.py file
     def update_config(self):
         self.logger.write_to_file("Instructed to update database configuration.")
         self.logger.write_to_file(f"\tBEFORE DATABASE INIT STATUS: {self.database_initialization_status}.")
