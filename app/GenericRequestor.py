@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 from Logger import Logger
 import requests
 
@@ -20,11 +21,11 @@ class GenericRequestor:
 
         return self.timestamp.strftime("%Y-%m-%d")
 
-    def fetch_data(self, search_parameter):
+    def fetch_data(self, endpoint):
         """Generic method to make GET request. Returns nothing, but sets response object"""
 
-        url = search_parameter["url"]
-        header = search_parameter["headers"]
+        url = endpoint[1]
+        header = json.loads(endpoint[2])
 
         self.logger.write_to_file("Attempting to make GET request")
         try:
@@ -33,13 +34,11 @@ class GenericRequestor:
             self.logger.write_to_file(f"Encountered error while sending GET request:\n{e}")
         else:
             self.logger.write_to_file(f"GET request status {response_obj.status_code}")
-            self.response = response_obj.json()
+            self.response = response_obj
 
     def get_json_response(self):
-        """Converts response attribute with JSON representations."""
-        return self.response.json
+        """Returns tuple of JSON string data and timestamp"""
+        d = json.dumps(self.response.json()).replace("'", "")
+        t = self.get_timestamp()
+        return (d, t)
         
-    def parse_response(self, response_dict):
-        """This method will be deprecated since we are now dumping raw JSON into the database landing site."""
-
-        pass

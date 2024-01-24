@@ -31,25 +31,14 @@ class DataHandler:
         self.logger.write_to_file("Successfully commited block.")
         return True
 
-    def insert_data(self, car_object):
+    def insert_data(self, data):
         """Begins a transaction block of INSERT INTO statements for each individual listing. Function DOES NOT commit changes."""
 
         command = f'''
-        INSERT INTO staging_funance.raw_data (make, model, _year, vin, location_zipcode, _location, mileage, price, _url, listing_id, listing_date, details, fetch_ts)
+        INSERT INTO landing.landing_site
         VALUES(
-            '{car_object.make}',
-            '{car_object.model}',
-            '{car_object.year}',
-            '{car_object.vin}',
-            '{car_object.location_zipcode}',
-            '{car_object.location.replace("'", "")}',
-            '{car_object.mileage}',
-            '{car_object.price}',
-            '{car_object.url}',
-            '{car_object.listing_id}',
-            '{car_object.listing_date}',
-            '{car_object.details.replace("'", "")}',    -- cursed
-            '{car_object.fetch_ts}'
+            '{data[0]}',
+            '{data[1]}'
         );
         '''
 
@@ -58,26 +47,9 @@ class DataHandler:
         except Exception as e:
             self.logger.write_to_file(f"Encountered error sending INSERT INTO to database: {e}.")
 
-    def run_sql_scripts(self, directory, script_list):
-        """Runs all transformation scripts in order"""
-
-        for i in script_list:
-            f = open(directory + i).read()
-            self.cursor.execute(f)
-
-    def process_raw_data(self):
-        self.run_sql_scripts(self.elt_directory, self.transformation_scripts)
-        self.logger.write_to_file(f"Successfully ran transformation scripts.")
-
-    def load_to_production(self):
-        self.run_sql_scripts(self.elt_directory, self.load_scripts)
-        self.logger.write_to_file(f"Successfully ran load scripts.")
-
     def close(self):
         self.connector.close()
         self.logger.write_to_file("Successfully performed transformation and load scripts, closing connection.")
-
-
 
     def update_config(self):
         self.logger.write_to_file("Instructed to update database configuration.")
@@ -136,26 +108,4 @@ class DataHandler:
             elif user_input == "n":
                 self.logger.write_to_file("User denied databsae reset.")
                 break
-
-    def perform_transformations(self):
-        # TODO: maybe separate out each script into its own function call
-        # TODO: maybe house load / transform scripts in config file
-        scripts = [
-            'process_and_insert_staging_data.sql',
-            #'remove_from_raw.sql',
-            'insert_into_production.sql'
-            #'remove_from_processed.sql'
-        ]
-
-        for i in scripts:
-            path = self.elt_directory + i
-
-            f = open(path, "r").read()
-            self.cursor.execute(f)
-            self.logger.write_to_file(f"Successfully ran script '{i}'.")
-
-
-
-
-
 
