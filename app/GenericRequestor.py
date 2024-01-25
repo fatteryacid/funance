@@ -47,8 +47,10 @@ class GenericRequestor:
 
     def get_json_response(self):
         """Returns tuple of JSON string data and timestamp"""
-        c = self.get_backend_model()
-        d = json.dumps(self.response.json()).replace("'", "")
+        m = self.get_backend_model()
+        r = json.dumps(self.response.json()).replace("'", "")
         t = self.get_timestamp()
-        return (c, d, t)
+        d = self.get_date()
+
+        return (m, r, t, d)
         

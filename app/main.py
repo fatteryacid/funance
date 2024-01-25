@@ -34,8 +34,10 @@ def main():
         requestor.fetch_data(endpoint)
         all_listings.append(requestor.get_json_response())
 
-    logging_handler.write_to_file(f"Attempting to insert {len(all_listings)} records to database.")
+    logging_handler.write_to_file(f"Attempting to create partition in database.")
+    handler.create_partition()
 
+    logging_handler.write_to_file(f"Attempting to insert {len(all_listings)} records to database.")
     [handler.insert_data(x) for x in all_listings]
 
     handler.commit_changes()

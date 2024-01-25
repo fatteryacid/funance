@@ -1,3 +1,5 @@
+from datetime import datetime
+from datetime import timedelta
 import json
 from Logger import Logger
 import os
@@ -31,15 +33,38 @@ class DataHandler:
         self.logger.write_to_file("Successfully commited block.")
         return True
 
+    def create_partition(self):
+        """
+        Creates a new partition in landing_site for the day. Should only run once.
+        Thinking of separating this into a separate script that is scheduled to handle partition creations.
+        """
+        dt_nm = datetime.now().strftime("%Y_%m_%d")
+        dt_p1 = datetime.now().strftime("%Y-%m-%d")
+        dt_p2 =(datetime.now()+timedelta(days=1)).strftime("%Y-%m-%d")
+
+        command =f'''
+        CREATE TABLE extract_{dt_nm} PARTITION OF raw_funance.landing_site
+            FOR VALUES FROM ('{dt_p1}') TO ('{dt_p2}')
+        ;
+        '''
+        try:
+            self.cursor.execute(command)
+            self.commit_changes()
+        except Exception as e:
+            self.logger.write_to_file(f"Encountered error creating a new partition: {e}.")
+        
+
     def insert_data(self, data):
         """Begins a transaction block of INSERT INTO statements for each individual listing. Function DOES NOT commit changes."""
+
 
         command = f'''
         INSERT INTO raw_funance.landing_site
         VALUES(
             '{data[0]}',
             '{data[1]}',
-            '{data[2]}'
+            '{data[2]}',
+            '{data[3]}'
         );
         '''
 
@@ -51,63 +76,4 @@ class DataHandler:
     def close(self):
         self.connector.close()
         self.logger.write_to_file("Successfully performed transformation and load scripts, closing connection.")
-
-    #TODO: Remove these items and put them into a setup.py file
-    def update_config(self):
-        self.logger.write_to_file("Instructed to update database configuration.")
-        self.logger.write_to_file(f"\tBEFORE DATABASE INIT STATUS: {self.database_initialization_status}.")
-        self.logger.write_to_file(f"\tBEFORE DATABASE METADATA: {self.database_metadata}.")
-
-        compiled_config = {
-            "initialized": self.database_initialization_status,
-            "connection_metadata": self.database_metadata
-        }
-        out_config = json.dumps(compiled_config, indent=4)
-
-        with open("./configs/user_data_config.json", "w") as outfile:
-            outfile.write(out_config)
-
-        self.logger.write_to_file("Successfully updated configuration.")
-
-# TODO: Re-evaluate initialize_database() and reset_database() functions
-    def initialize_database(self):
-        if self.database_initialization_status is True:
-            #self.logger.write_to_file(f"Database already initialized.")
-            return
-
-        self.logger.write_to_file("Database not initialized. Creating new database.")
-
-        for script in os.listdir(self.init_directory):
-            f = os.path.join(self.init_directory, script)
-
-            if os.path.isfile(f):
-                j = open(f, "r").read()
-                self.cursor.execute(j)
-                self.connector.commit()
-                print(f"successfully executed script: {f}")
-                self.logger.write_to_file(f"Successfully excecuted script: '{f}'.")
-
-        self.database_initialization_status = True
-        self.update_config()
-        self.logger.write_to_file("Successfully initialized database.")
-
-    def reset_database(self):
-        # This removes completely purges the database and recreates tables
-        while True:
-            self.logger.write_to_file("Reset database initialized. Waiting for user prompt.")
-            user_input = input(f"WARNING! PROGRAM IS TRYING TO RESET DATABASE. PRESS y TO CONFIRM OR n TO HALT. ")
-            if user_input == "y":
-                self.logger.write_to_file("User confirmed database reset.")
-                f = open("./database/delete/delete_all.sql", "r").read()
-                self.cursor.execute(f)
-                self.connector.commit()
-
-                self.database_initialization_status = False
-                self.initialize_database()
-                self.logger.write_to_file("Successfully reset database.")
-                return True
-
-            elif user_input == "n":
-                self.logger.write_to_file("User denied databsae reset.")
-                break
 
