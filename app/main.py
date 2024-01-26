@@ -16,10 +16,10 @@ def main():
     logging_handler.open_file()
     logging_handler.write_to_file("Pipeline run initiated.")
 
-    #TODO: Try to condense this code block
+    #TODO: Try to condense this code block and handle the query better
     con = sqlite3.connect('secret/metadata')
     cur = con.cursor()
-    endpoints = cur.execute('SELECT backend_name, request_url, request_headers FROM endpoints LIMIT 1').fetchall()
+    endpoints = cur.execute('SELECT backend_name, request_url, request_headers FROM endpoints').fetchall()
     cur.close()
     con.close()
 
@@ -34,10 +34,7 @@ def main():
         requestor.fetch_data(endpoint)
         all_listings.append(requestor.get_json_response())
 
-    logging_handler.write_to_file(f"Attempting to create partition in database.")
-    handler.create_partition()
-
-    logging_handler.write_to_file(f"Attempting to insert {len(all_listings)} records to database.")
+    handler.create_partition(procedure_type="weekly")
     [handler.insert_data(x) for x in all_listings]
 
     handler.commit_changes()
