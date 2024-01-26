@@ -32,28 +32,7 @@ class DataHandler:
         self.connector.commit()
         self.logger.write_to_file("Successfully commited block.")
         return True
-
-    def create_partition(self):
-        """
-        Creates a new partition in landing_site for the day. Should only run once.
-        Thinking of separating this into a separate script that is scheduled to handle partition creations.
-        """
-        dt_nm = datetime.now().strftime("%Y_%m_%d")
-        dt_p1 = datetime.now().strftime("%Y-%m-%d")
-        dt_p2 =(datetime.now()+timedelta(days=1)).strftime("%Y-%m-%d")
-
-        command =f'''
-        CREATE TABLE extract_{dt_nm} PARTITION OF raw_funance.landing_site
-            FOR VALUES FROM ('{dt_p1}') TO ('{dt_p2}')
-        ;
-        '''
-        try:
-            self.cursor.execute(command)
-            self.commit_changes()
-        except Exception as e:
-            self.logger.write_to_file(f"Encountered error creating a new partition: {e}.")
         
-
     def insert_data(self, data):
         """Begins a transaction block of INSERT INTO statements for each individual listing. Function DOES NOT commit changes."""
 
