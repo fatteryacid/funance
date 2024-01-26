@@ -28,6 +28,7 @@ def main():
     handler = DataHandler(data_conf, logging_handler)
     requestor = GenericRequestor(logging_handler)
 
+    #TODO: Revise this to insert as we get data to avoid exploding memory.
     all_listings = []
 
     for endpoint in endpoints:
