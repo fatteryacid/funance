@@ -1,0 +1,23 @@
+version: 1
+
+sources:
+  - name: staging_funance
+    tables:
+      - name: unpacked_data
+        description: Layer that unpacks semi-structured JSON response data into tabular format for transformations.
+        columns:
+          - name: backend_model
+          - name: job_ts
+          - name: job_dt
+          - name: location_address
+          - name: location_zipcode
+          - name: location_country
+          - name: vehicle_trim
+          - name: vehicle_mileage
+          - name: vehicle_year
+          - name: vehicle_price
+          - name: vehicle_vin
+          - name: vehicle_image_url
+          - name: listing_url
+          - name: listing_details
+          - name: listing_date
