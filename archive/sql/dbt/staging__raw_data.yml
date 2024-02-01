@@ -1,0 +1,21 @@
+verison: 1
+
+sources:
+  - name: staging_funance
+    tables:
+      - name: raw_data
+        description: Scraped data from websites, stored as strings and partitioned on timestamp of fetch.
+        columns:
+          - name: make
+          - name: model
+          - name: _year
+          - name: vin
+          - name: location_zipcode
+          - name: mileage
+          - name: price
+          - name: _url
+          - name: listing_date
+          - name: details
+          - name: fetch_ts
+            tests:
+              - not_null
