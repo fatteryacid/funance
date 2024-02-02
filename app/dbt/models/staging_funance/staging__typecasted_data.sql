@@ -52,6 +52,11 @@ SELECT
                 ELSE NULL
             END
         ELSE
-            TO_DATE(TRIM(REGEXP_REPLACE(listing_date, '(st|th|rd|nd)', '', 'g')) || ' ' || EXTRACT(YEAR FROM job_dt), 'Mon DD YYYY')::DATE
+            -- Previously ran into issue where listing dates from the previous year were not identified. This solves that issue
+            -- However, this is only scalable for a 1-2 year relationship
+            CASE 
+                WHEN TO_DATE(TRIM(REGEXP_REPLACE(listing_date, '(st|th|rd|nd)', '', 'g')) || ' ' || EXTRACT(YEAR FROM job_dt), 'Mon DD YYYY')::DATE > job_dt THEN (TO_DATE(TRIM(REGEXP_REPLACE(listing_date, '(st|th|rd|nd)', '', 'g')) || ' ' || EXTRACT(YEAR FROM job_dt), 'Mon DD YYYY')::DATE - INTERVAL '1 YEAR')
+                ELSE TO_DATE(TRIM(REGEXP_REPLACE(listing_date, '(st|th|rd|nd)', '', 'g')) || ' ' || EXTRACT(YEAR FROM job_dt), 'Mon DD YYYY')::DATE
+            END
     END                 AS listing_date
 FROM {{ ref('staging__unpacked_data') }}
