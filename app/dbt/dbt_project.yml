@@ -15,6 +15,9 @@ target-path: "target"
 
 models:
   funance:
+    raw_funance:
+      materialized: table
+      +schema:  raw_funance
     staging_funance:
       materialized: table
       +schema: staging_funance

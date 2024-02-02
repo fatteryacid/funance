@@ -169,3 +169,5 @@ logs/*
 
 profiles.yml
 .user.yml
+
+secret/

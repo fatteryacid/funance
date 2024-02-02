@@ -1,9 +1,9 @@
 from DataHandler import DataHandler
+from GenericRequestor import GenericRequestor
 import json
 from Logger import Logger
 import os
-from TempestRequestor import TempestRequestor
-from TraderRequestor import TraderRequestor
+import sqlite3
 
 def get_config(default_path, user_path):
     if os.path.exists(user_path):
@@ -16,36 +16,29 @@ def main():
     logging_handler.open_file()
     logging_handler.write_to_file("Pipeline run initiated.")
 
+    #TODO: Try to condense this code block and handle the query better
+    con = sqlite3.connect('secret/metadata')
+    cur = con.cursor()
+    endpoints = cur.execute('SELECT backend_name, request_url, request_headers FROM endpoints').fetchall()
+    cur.close()
+    con.close()
+
     data_conf = get_config('./configs/default_data_config.json', './configs/user_data_config.json')
-    scraper_conf = get_config('./configs/default_requests_config.json', './configs/user_requests_config.json')
 
     handler = DataHandler(data_conf, logging_handler)
+    requestor = GenericRequestor(logging_handler)
 
-    tempest = TempestRequestor(logging_handler)
-    trader = TraderRequestor(logging_handler)
+    #TODO: Revise this to use multithreading to speed up operations
+    for endpoint in endpoints:
+        all_listings = []
+        requestor.fetch_data(endpoint)
+        all_listings.append(requestor.get_json_response())
 
-    all_listings = set()
+        handler.create_partition(procedure_type="weekly")
+        [handler.insert_data(x) for x in all_listings]
 
-    for search in scraper_conf["search_parameters"]:
-        if search["metadata"]["platform"] == "autotempest":
-            tempest.fetch_data(search)
-            all_listings.update(tempest.parse_response())
-
-        elif search["metadata"]["platform"] == "autotrader":
-            trader.fetch_data(search)
-            all_listings.update(trader.parse_response())
-
-        else:
-            logging_handler.write_to_file(f"Unrecognized search:\n{search}")
-
-    logging_handler.write_to_file(f"Attempting to insert {len(all_listings)} records to database.")
-
-    [handler.insert_data(x) for x in all_listings]
-
-    handler.commit_changes()
-    #handler.process_raw_data()
-    #handler.load_to_production()
-    #handler.commit_changes()
+        handler.commit_changes()
+    
     handler.close()
 
 if __name__ == '__main__':

@@ -1,0 +1,12 @@
+version: 1
+
+sources:
+  - name: raw_funance
+    tables:
+      - name: landing_site
+        description: Layer for unmodified, raw data extracted from API call and loaded via custom pipeline
+        columns:
+          - name: backend_model
+          - name: raw_data
+          - name: job_ts
+          - name: job_dt

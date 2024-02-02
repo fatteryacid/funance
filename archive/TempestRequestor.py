@@ -3,6 +3,7 @@ from GenericRequestor import GenericRequestor
 from Logger import Logger
 
 class TempestRequestor(GenericRequestor):
+    """This child class will be deprecated since we are now only dumping raw JSON into the database landing site."""
     def __init__(self, logger):
         super().__init__(logger)
 
