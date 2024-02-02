@@ -1,9 +1,9 @@
 from DataHandler import DataHandler
+from GenericRequestor import GenericRequestor
 import json
 from Logger import Logger
 import os
 import sqlite3
-from GenericRequestor import GenericRequestor
 
 def get_config(default_path, user_path):
     if os.path.exists(user_path):
@@ -28,17 +28,17 @@ def main():
     handler = DataHandler(data_conf, logging_handler)
     requestor = GenericRequestor(logging_handler)
 
-    #TODO: Revise this to insert as we get data to avoid exploding memory.
-    all_listings = []
-
+    #TODO: Revise this to use multithreading to speed up operations
     for endpoint in endpoints:
+        all_listings = []
         requestor.fetch_data(endpoint)
         all_listings.append(requestor.get_json_response())
 
-    handler.create_partition(procedure_type="weekly")
-    [handler.insert_data(x) for x in all_listings]
+        handler.create_partition(procedure_type="weekly")
+        [handler.insert_data(x) for x in all_listings]
 
-    handler.commit_changes()
+        handler.commit_changes()
+    
     handler.close()
 
 if __name__ == '__main__':
