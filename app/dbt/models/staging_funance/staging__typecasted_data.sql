@@ -19,7 +19,8 @@ SELECT
         WHEN backend_model ILIKE '%honda%' THEN 'Honda'
         WHEN backend_model ILIKE '%toyota%' THEN 'Toyota'
         WHEN backend_model ILIKE '%subaru%' THEN 'Subaru'
-        ELSE SPLIT_PART(backend_model, '_', 1)
+        WHEN backend_model ILIKE '%mazda%' THEN 'Mazda'
+        ELSE INITCAP(SPLIT_PART(backend_model, '_', 1))
     END                 AS vehicle_make,
     CASE
         WHEN backend_model ILIKE '%integra_type_s%' THEN 'Integra Type S'
@@ -31,6 +32,7 @@ SELECT
         WHEN backend_model ILIKE '%911%'            THEN 'Carrera 911'
         WHEN backend_model ILIKE '%sti%'            THEN 'WRX STI'
         WHEN backend_model ILIKE '%gr_supra%'       THEN 'GR Supra'
+        WHEN backend_model ILIKE '%mx5%'            THEN 'MX-5 Miata'
         ELSE backend_model
     END                 AS vehicle_model,
     vehicle_year,
