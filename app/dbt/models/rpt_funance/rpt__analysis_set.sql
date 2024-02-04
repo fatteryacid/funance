@@ -62,14 +62,14 @@ SELECT
         WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 31 AND 60 THEN '31 to 60 days old'
         WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 61 AND 90 THEN '61 to 90 days old'
         WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 91 AND 120 THEN '91 to 120 days old'
-        WHEN EXTRACT(DAY FROM job_dt - listing_date) >= 121 THEN '>= 120 days old'
+        WHEN EXTRACT(DAY FROM job_dt - listing_date) >= 121 THEN '120+ days old'
         ELSE NULL
     END                                             AS listing_age_band,
     CASE 
-        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 0 AND 30 THEN 'Suboptimal'
-        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 31 AND 60 THEN 'Decent'
-        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 61 AND 120 THEN 'Optimal'
-        WHEN EXTRACT(DAY FROM job_dt - listing_date) >= 121 THEN 'Possible demo car'
+        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 0 AND 30 THEN '1 - Suboptimal'
+        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 31 AND 60 THEN '2 - Decent'
+        WHEN EXTRACT(DAY FROM job_dt - listing_date) BETWEEN 61 AND 120 THEN '3 - Optimal'
+        WHEN EXTRACT(DAY FROM job_dt - listing_date) >= 121 THEN '4 - Possible demo car'
         ELSE NULL
     END                                             AS negotiation_opportunity_status
 
